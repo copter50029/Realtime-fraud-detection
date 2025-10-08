@@ -353,10 +353,10 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker1:29092,PLAINTEXT_HOST://localhost:9092
       KAFKA_METRIC_REPORTERS: io.confluent.metrics.reporter.ConfluentMetricsReporter
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 2
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
-      KAFKA_CONFLUENT_LICENSE_TOPIC_REPLICATION_FACTOR: 2
-      KAFKA_CONFLUENT_BALANCER_TOPIC_REPLICATION_FACTOR: 2
+      KAFKA_CONFLUENT_LICENSE_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_CONFLUENT_BALANCER_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
       KAFKA_JMX_PORT: 9101
@@ -374,42 +374,6 @@ services:
       timeout: 5s
       retries: 5
 
-  broker2:
-    image: confluentinc/cp-server:7.6.7
-    hostname: broker2
-    container_name: broker2
-    depends_on:
-      zookeeper:
-        condition: service_healthy
-    ports:
-      - "9093:9093"
-      - "9102:9102"
-    environment:
-      KAFKA_BROKER_ID: 2
-      KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker2:29093,PLAINTEXT_HOST://localhost:9093
-      KAFKA_METRIC_REPORTERS: io.confluent.metrics.reporter.ConfluentMetricsReporter
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 2
-      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
-      KAFKA_CONFLUENT_LICENSE_TOPIC_REPLICATION_FACTOR: 2
-      KAFKA_CONFLUENT_BALANCER_TOPIC_REPLICATION_FACTOR: 2
-      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
-      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
-      KAFKA_JMX_PORT: 9102
-      KAFKA_JMX_HOSTNAME: localhost
-      KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL: http://schema-registry:8081
-      CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS: broker2:29093
-      CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS: 1
-      CONFLUENT_METRICS_ENABLE: "false"
-      CONFLUENT_SUPPORT_CUSTOMER_ID: "anonymous"
-    networks:
-      - confluent
-    healthcheck:
-      test: ["CMD", "bash", "-c", "nc -z localhost 909"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
   schema-registry:
     image: confluentinc/cp-schema-registry:7.6.7
     hostname: schema-registry
@@ -417,13 +381,11 @@ services:
     depends_on:
       broker1:
         condition: service_healthy
-      broker2:
-        condition: service_healthy
     ports:
       - "8081:8081"
     environment:
       SCHEMA_REGISTRY_HOST_NAME: schema-registry
-      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: "broker1:29092,broker2:29093"
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: "broker1:29092"
       SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
     networks:
       - confluent
@@ -440,17 +402,15 @@ services:
     depends_on:
       broker1:
         condition: service_healthy
-      broker2:
-        condition: service_healthy
     ports:
       - "9021:9021"
     environment:
-      CONTROL_CENTER_BOOTSTRAP_SERVERS: "broker1:29092,broker2:29093"
+      CONTROL_CENTER_BOOTSTRAP_SERVERS: "broker1:29092"
       CONTROL_CENTER_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
-      CONTROL_CENTER_REPLICATION_FACTOR: 2
-      CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS: 2
-      CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 2
-      CONFLUENT_METRICS_TOPIC_REPLICATION: 2
+      CONTROL_CENTER_REPLICATION_FACTOR: 1
+      CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS: 1
+      CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 1
+      CONFLUENT_METRICS_TOPIC_REPLICATION: 1
       CONFLUENT_METRICS_ENABLE: "false"
       PORT: 9021
     networks:
