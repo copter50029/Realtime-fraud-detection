@@ -157,9 +157,6 @@
 /*
  * 	Owl Carousel - Lazy Load Plugin
  */
-.owl-carousel .owl-item {
-  /* This fixes IE11 lazy loading + autoheight bug */
-}
 
 .owl-carousel .owl-item .owl-lazy {
   opacity: 0;

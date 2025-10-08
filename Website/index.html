@@ -1,241 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- Meta information -->
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
-<head>
-  <!-- Meta information -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <title>Real Time Fraud Detector - Website</title>
 
-  <title>Real Time Fraud Detector - Website</title>
+    <!-- Bootstrap -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
-  <!-- Bootstrap -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="assets/css/templatemo-chain-app-dev.css" />
+    <link rel="stylesheet" href="assets/css/animated.css" />
+    <link rel="stylesheet" href="assets/css/owl.css" />
+    <link rel="icon" type="image/png" href="assets\images\logo.png" />
+  </head>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" crossorigin="anonymous">
-  <link rel="stylesheet" href="assets/css/templatemo-chain-app-dev.css">
-  <link rel="stylesheet" href="assets/css/animated.css">
-  <link rel="stylesheet" href="assets/css/owl.css">
-  <link rel="icon" type="image/png" href="assets\images\logo.png">
-</head>
-
-<body>
-
-  <!-- Preloader -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span><span></span><span></span>
+  <body>
+    <!-- Preloader -->
+    <div id="js-preloader" class="js-preloader">
+      <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots"><span></span><span></span><span></span></div>
       </div>
     </div>
-  </div>
 
-  <!-- Header -->
-  <header class="header-area header-sticky wow slideInDown">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <nav class="main-nav">
-            <!-- Logo -->
-            <a href="index.html" class="logo">
-              <!-- FIXED: closed the alt attribute properly -->
-              <img src="assets/images/logo.png" alt="Chain App Dev">
-            </a>
-            <!-- Nav Menu -->
-            <ul class="nav">
-              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-              <li class="scroll-to-section"><a href="#services">Services</a></li>
-              <li class="scroll-to-section"><a href="#about">About</a></li>
-              <li class="scroll-to-section"><a href="#dashboard">Dashboard</a></li>
-              <li class="scroll-to-section"><a href="#members">Members</a></li>
-            </ul>  
-            <!-- Mobile Menu -->
-            <a class='menu-trigger'><span>Menu</span></a>
-          </nav>
+    <!-- Header -->
+    <header class="header-area header-sticky wow slideInDown">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <nav class="main-nav">
+              <!-- Logo -->
+              <a href="index.html" class="logo">
+                <!-- FIXED: closed the alt attribute properly -->
+                <img src="assets/images/logo.png" alt="Chain App Dev" />
+              </a>
+              <!-- Nav Menu -->
+              <ul class="nav">
+                <li class="scroll-to-section">
+                  <a href="#top" class="active">Home</a>
+                </li>
+                <li class="scroll-to-section">
+                  <a href="#services">Services</a>
+                </li>
+                <li class="scroll-to-section"><a href="#about">About</a></li>
+                <li class="scroll-to-section">
+                  <a href="#dashboard">Dashboard</a>
+                </li>
+                <li class="scroll-to-section">
+                  <a href="#members">Members</a>
+                </li>
+              </ul>
+              <!-- Mobile Menu -->
+              <a class="menu-trigger"><span>Menu</span></a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="main-banner wow fadeIn" id="top">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 col-md-12 text-center text-lg-start">
+            <div class="left-content">
+              <h2>Real Time Fraud Detector</h2>
+              <h4 class="banner-subtitle">Fog Final Project</h4>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12 text-center">
+            <div class="right-image">
+              <img src="assets/images/slider-dec.png" alt="" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </header>
 
-  <!-- Hero Section -->
-  <div class="main-banner wow fadeIn" id="top">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 col-md-12 text-center text-lg-start">
-          <div class="left-content">
-            <h2>Real Time Fraud Detector</h2>
-            <h4 class="banner-subtitle">Fog Final Project</h4>
+    <!-- Services -->
+    <div id="services" class="services section">
+      <div class="container">
+        <div class="section-heading">
+          <h4>Amazing <em>Services & Features</em> for you</h4>
+          <img src="assets/images/heading-line-dec.png" alt="" />
+          <p>Check it out!</p>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-3">
+            <div class="service-item third-service">
+              <a href="#dashboard">
+                <h4>Dashboard</h4>
+                <p>Head to the Dashboard!</p>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="service-item fourth-service">
+              <a href="#members">
+                <h4>Members</h4>
+                <p>Head to the Members!</p>
+              </a>
+            </div>
           </div>
         </div>
-        <div class="col-lg-6 col-md-12 text-center">
-          <div class="right-image">
-            <img src="assets/images/slider-dec.png" alt="">
+
+        <!-- About Section (Compact) -->
+        <div
+          id="about"
+          class="about-us section"
+          style="padding: 40px 0; margin-top: 10%"
+        >
+          <div class="container">
+            <div class="row align-items-center justify-content-center">
+              <!-- Main Content -->
+              <div class="col-lg-8">
+                <h4 style="margin-bottom: 40px; text-align: center">
+                  <b>About <em>What We Do</em></b>
+                </h4>
+
+                <!-- Single Centered Box -->
+                <div
+                  class="box-item"
+                  style="
+                    padding: 30px;
+                    border-radius: 20px;
+                    background: #fff;
+                    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+                    text-align: center;
+                    text-shadow: 0 0 1px black;
+                  "
+                >
+                  <p>
+                    Our goal is to create a <b>real-time fraud checker</b> that
+                    helps people and businesses stay safe. With smart detection
+                    tools and an easy-to-use dashboard, our system spots
+                    suspicious activity right away and makes it simple to
+                    understand what's happening. We want to give users
+                    confidence, protect their data, and make fraud prevention
+                    faster, clearer, and more effective.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
 
-
-  <!-- Services -->
-  <div id="services" class="services section">
-    <div class="container">
-      <div class="section-heading">
-        <h4>Amazing <em>Services & Features</em> for you</h4>
-        <img src="assets/images/heading-line-dec.png" alt="">
-        <p>Check it out!</p>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-lg-3">
-          <div class="service-item third-service">
-            <a href="#dashboard">
-              <h4>Dashboard</h4>
-              <p>Head to the Dashboard!</p>
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="service-item fourth-service">
-            <a href="#members">
-              <h4>Members</h4>
-              <p>Head to the Members!</p>
-            </a>
-          </div>
-        </div>
-      </div>
-
-  <!-- About Section (Compact) -->
-  <div id="about" class="about-us section" style="padding:40px 0; margin-top: 10%;">
-    <div class="container">
-      <div class="row align-items-center justify-content-center">
-        
-        <!-- Main Content -->
-        <div class="col-lg-8">
-          <h4 style="margin-bottom:40px; text-align: center;"><b>About <em>What We Do</em></b></h4>
-          
-          <!-- Single Centered Box -->
-          <div class="box-item" 
-              style="padding:30px; border-radius:20px; background:#fff; box-shadow:0px 4px 15px rgba(0,0,0,0.1); text-align:center; text-shadow: 0 0 1px black;">
-            <p>
-              Our goal is to create a <b>real-time fraud checker</b> that helps people and businesses stay safe. 
-              With smart detection tools and an easy-to-use dashboard, our system spots suspicious activity right away 
-              and makes it simple to understand what’s happening. We want to give users confidence, protect their data, 
-              and make fraud prevention faster, clearer, and more effective.
-            </p>
-
-          </div>
-          
-        </div>
-        
-      </div>
-    </div>
-  </div>
-
-        
         <!-- Right Image -->
         <div class="col-lg-6 text-center">
-          <img src="assets/images/about-right-dec.png" alt="" style="width:100%; height:auto;">
+          <img
+            src="assets/images/about-right-dec.png"
+            alt=""
+            style="width: 100%; height: auto"
+          />
         </div>
-        
       </div>
     </div>
-  </div>
-
 
     <!-- Dashboard Section -->
-  <div id="dashboard" class="dashboard section" style="padding:200px 0; text-align:center;">
-    <div class="container">
-      <h4 style="margin-bottom: 50px;"><b>Fraud Detection <span class="section-heading"><em>Dashboard</em></span></b></h4>
-      <p style="margin-bottom:40px; color:#555;">
-        A quick overview of the real-time fraud detection system. Monitor alerts, statistics, and activities here.
-      </p>
-      <div class="row justify-content-center">
-        <div class="col-lg-4 col-md-6" style="margin-bottom:30px;">
-          <div class="service-item" style="padding:30px; border-radius:10px; background:#fff; box-shadow:0 2px 10px rgba(0,0,0,0.1);">
-            <h5><b><div style="margin-bottom: 10px; ">Total Transactions</div></b></h5>
-            <p>Track real-time fraud alerts detected by the system.</p>
+    <div
+      id="dashboard"
+      class="dashboard section"
+      style="padding: 200px 0; text-align: center"
+    >
+      <div class="container">
+        <h4 style="margin-bottom: 50px">
+          <b>
+            Fraud Detection
+            <span class="section-heading"><em>Dashboard</em></span>
+          </b>
+        </h4>
+        <p style="margin-bottom: 40px; color: #555">
+          A quick overview of the real-time fraud detection system. Monitor
+          alerts, statistics, and activities here.
+        </p>
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-6" style="margin-bottom: 30px">
+            <div
+              class="service-item"
+              style="
+                padding: 30px;
+                border-radius: 10px;
+                background: #fff;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+              "
+            >
+              <h5>
+                <b><div style="margin-bottom: 10px">Total Transactions</div></b>
+              </h5>
+              <p>Track real-time fraud alerts detected by the system.</p>
+            </div>
           </div>
-        </div>
-        <div class="col-lg-4 col-md-6" style="margin-bottom:30px;">
-          <div class="service-item" style="padding:30px; border-radius:10px; background:#fff; box-shadow:0 2px 10px rgba(0,0,0,0.1);">
-            <h5><b><div style="margin-bottom: 10px; ">Total of Fraud</div></b></h5>
-            <p>View fraud detection trends and daily summaries.</p>
+          <div class="col-lg-4 col-md-6" style="margin-bottom: 30px">
+            <div
+              class="service-item"
+              style="
+                padding: 30px;
+                border-radius: 10px;
+                background: #fff;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+              "
+            >
+              <h5>
+                <b><div style="margin-bottom: 10px">Total of Fraud</div></b>
+              </h5>
+              <p>View fraud detection trends and daily summaries.</p>
+            </div>
           </div>
-        </div>
-        <div class="col-lg-4 col-md-6" style="margin-bottom:30px;">
-          <div class="service-item" style="padding:30px; border-radius:10px; background:#fff; box-shadow:0 2px 10px rgba(0,0,0,0.1);">
-            <h5><b><div style="margin-bottom: 10px; ">Between Fault and No Fault</div></b></h5>
-            <p>Monitor recent transactions and suspicious activity logs.</p>
+          <div class="col-lg-4 col-md-6" style="margin-bottom: 30px">
+            <div
+              class="service-item"
+              style="
+                padding: 30px;
+                border-radius: 10px;
+                background: #fff;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+              "
+            >
+              <h5>
+                <b
+                  ><div style="margin-bottom: 10px">
+                    Between Fault and No Fault
+                  </div></b
+                >
+              </h5>
+              <p>Monitor recent transactions and suspicious activity logs.</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
+    <!-- Members Section -->
+    <div
+      id="members"
+      class="Member-list section"
+      style="padding: 85px 0; text-align: center"
+    >
+      <h4 style="margin-bottom: 30px">
+        <b>Meet The <span class="section-heading">Team</span></b>
+      </h4>
+      <div
+        class="members-container"
+        style="
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 50px;
+          margin-top: 20px;
+        "
+      >
+        <div style="text-align: center">
+          <a href="https://github.com/L33by" target="_blank">
+            <img
+              src="assets/images/phrolova.jpg"
+              alt="LBee"
+              class="profile-img"
+            />
+          </a>
+          <h6 style="color: blanchedalmond; margin-top: 10px">
+            <b>LEE-ANNE</b>
+          </h6>
+        </div>
 
-  <!-- Members Section -->
-  <div id="members" class="Member-list section" style="padding:85px 0; text-align:center;">
-    <h4 style="margin-bottom: 30px; ">
-      <b>Meet The <span class="section-heading">Team</span></b>
-    </h4>
-    <div class="members-container" style="display:flex; justify-content:center; flex-wrap:wrap; gap:50px; margin-top:20px;">
+        <div style="text-align: center">
+          <a href="https://github.com/teethut" target="_blank">
+            <img
+              src="assets/images/quiet.png"
+              alt="Quiet"
+              class="profile-img"
+            />
+          </a>
+          <h6 style="color: blanchedalmond; margin-top: 10px">
+            <b>TEETHUT</b>
+          </h6>
+        </div>
 
-<div style="text-align:center;">
-  <a href="https://github.com/L33by" target="_blank">
-    <img src="assets/images/phrolova.jpg" alt="LBee" class="profile-img">
-  </a>
-  <h6 style="color: blanchedalmond; margin-top: 10px; "><b>LEE-ANNE</b></h6>
-</div>
+        <div style="text-align: center">
+          <a href="https://github.com/copter50029" target="_blank">
+            <img
+              src="assets/images/Kiana.jpg"
+              alt="Kiana"
+              class="profile-img"
+            />
+          </a>
+          <h6 style="color: blanchedalmond; margin-top: 10px">
+            <b>KITSADA</b>
+          </h6>
+        </div>
 
-<div style="text-align:center;">
-  <a href="https://github.com/teethut" target="_blank">
-    <img src="assets/images/quiet.png" alt="Quiet" class="profile-img">
-  </a>
-  <h6 style="color: blanchedalmond; margin-top: 10px; "><b>TEETHUT</b></h6>
-</div>
+        <div style="text-align: center">
+          <a href="https://github.com/NoWMoNz" target="_blank">
+            <img
+              src="assets/images/katopfp.jpg"
+              alt="Kato"
+              class="profile-img"
+            />
+          </a>
+          <h6 style="color: blanchedalmond; margin-top: 10px">
+            <b>KRAIPICH</b>
+          </h6>
+        </div>
 
-<div style="text-align:center;">
-  <a href="https://github.com/copter50029" target="_blank">
-    <img src="assets/images/Kiana.jpg" alt="Kiana" class="profile-img">
-  </a>
-  <h6 style="color: blanchedalmond; margin-top: 10px; "><b>KITSADA</b></h6>
-</div>
-
-<div style="text-align:center;">
-  <a href="https://github.com/NoWMoNz" target="_blank">
-    <img src="assets/images/katopfp.jpg" alt="Kato" class="profile-img">
-  </a>
-  <h6 style="color: blanchedalmond; margin-top: 10px; "><b>KRAIPICH</b></h6>
-</div>
-
-<div style="text-align:center;">
-  <a href="https://github.com/MrLonely1423" target="_blank">
-    <img src="assets/images/86.jpg" alt="P" class="profile-img">
-  </a>
-  <h6 style="color: blanchedalmond; margin-top: 10px; "><b>NAPHAT</b></h6>
-</div>
-
-
+        <div style="text-align: center">
+          <a href="https://github.com/MrLonely1423" target="_blank">
+            <img src="assets/images/86.jpg" alt="P" class="profile-img" />
+          </a>
+          <h6 style="color: blanchedalmond; margin-top: 10px"><b>NAPHAT</b></h6>
+        </div>
+      </div>
     </div>
-  </div>
 
-
-
-  <!-- Scripts -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/animation.js"></script>
-  <script src="assets/js/imagesloaded.js"></script>
-  <script src="assets/js/popup.js"></script>
-  <script src="assets/js/custom.js"></script>
-</body>
+    <!-- Scripts -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/animation.js"></script>
+    <script src="assets/js/imagesloaded.js"></script>
+    <script src="assets/js/popup.js"></script>
+    <script src="assets/js/custom.js"></script>
+  </body>
 </html>
