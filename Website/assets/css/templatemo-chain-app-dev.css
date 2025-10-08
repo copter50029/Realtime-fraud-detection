@@ -1043,7 +1043,29 @@ Services Style
   background-color: #fff;
   border-radius: 10px;
   border-top-right-radius: 50px;
-  transition: all .3s;
+  transition: all .3s ease;
+}
+
+.profile-img {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  border-radius: 15px;       /* rounded edges */
+  transition: all 0.3s ease; /* smooth effect */
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.2); /* optional shadow */
+}
+
+.profile-img:hover {
+  transform: scale(1.1);     /* make it bigger */
+  border-radius: 30px;       /* more rounded when hovering */
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.3); /* deeper shadow on hover */
+}
+
+
+/* Scale the whole box on hover */
+.service-item:hover {
+  transform: scale(1.05); /* 1.05 = 5% bigger */
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.2); /* optional: deeper shadow */
 }
 
 .service-item .icon {
@@ -1071,8 +1093,9 @@ Services Style
 .service-item:hover h4,
 .service-item:hover p,
 .service-item:hover .text-button a {
-  color: #fff;
+  color: #000000;
 }
+
 
 .first-service .icon {
   background-image: url(../images/service-icon-01.png);
@@ -1168,6 +1191,16 @@ About Us
   margin-top: 30px;
   margin-bottom: 10px;
 }
+
+.box-item {
+  transition: all 0.3s ease; /* smooth hover effect */
+}
+
+.box-item:hover {
+  transform: scale(1.05);    /* grows bigger on hover */
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.2); /* deeper shadow for emphasis */
+}
+
 
 .about-us span {
   font-size: 14px;
