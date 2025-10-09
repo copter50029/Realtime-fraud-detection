@@ -12,7 +12,7 @@ from airflow.operators.python import PythonOperator
 from airflow.sdk import DAG
 from kafka import KafkaProducer
 
-DATA_PATH = "/opt/airflow/data/Raw-data.csv"
+DATA_PATH = "/opt/airflow/data/fraud-data.csv"
 
 
 def extract_data(data_path):
