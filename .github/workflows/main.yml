@@ -26,3 +26,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SQLFLUFF_DIALECT: mysql
           FILTER_REGEX_EXCLUDE: web-dashboard/.*
+          JSCPD_EXCLUDE: web-dashboard/.*

@@ -5,7 +5,7 @@
 [![forks](https://img.shields.io/github/forks/copter50029/Realtime-fraud-detection)](https://github.com/copter50029/Realtime-fraud-detection/network/members)
 [![license](https://img.shields.io/github/license/copter50029/Realtime-fraud-detection)](https://github.com/copter50029/Realtime-fraud-detection/blob/main/LICENSE)
 
-## Realtime Fraud Detection
+## Overview
 
 A system designed to identify and prevent fraudulent activities in real-time.
 
