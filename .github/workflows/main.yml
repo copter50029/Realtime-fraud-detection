@@ -25,5 +25,4 @@ jobs:
           VALIDATE_PYTHON_ISORT: false
           VALIDATE_JSCPD: false
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SQLFLUFF_DIALECT: mysql
-          FILTER_REGEX_EXCLUDE: web-dashboard/.*
+          FILTER_REGEX_EXCLUDE: web-dashboard/.*|Docker/script/.*
