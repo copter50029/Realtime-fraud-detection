@@ -1,6 +1,6 @@
 # Realtime Fraud Detection
 
-[![Super Linter](https://github.com/copter50029/Realtime-fraud-detection/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/copter50029/Realtime-fraud-detection/actions/workflows/main.yml)
+[![Super Linter](https://github.com/copter50029/Realtime-fraud-detection/actions/workflows/main.yml/badge.svg)](https://github.com/copter50029/Realtime-fraud-detection/actions/workflows/main.yml)
 [![contributors](https://img.shields.io/github/contributors/copter50029/Realtime-fraud-detection)](https://github.com/copter50029/Realtime-fraud-detection/graphs/contributors)
 [![forks](https://img.shields.io/github/forks/copter50029/Realtime-fraud-detection)](https://github.com/copter50029/Realtime-fraud-detection/network/members)
 [![license](https://img.shields.io/github/license/copter50029/Realtime-fraud-detection)](https://github.com/copter50029/Realtime-fraud-detection/blob/main/LICENSE)
