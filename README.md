@@ -70,6 +70,14 @@ To access the Airflow web interface, open your web browser and go to `http://loc
 
 To monitor Kafka (controlcenter), open your web browser and go to `http://localhost:9021`.
 
+To start ksqlDB CLI, go to your terminal and run:
+
+```bash
+docker exec -it ksqldb-cli ksql http://ksqldb-server:8088
+```
+
+Next, copy and paste the sql command in folder `Docker/scripts` to create a stream from the Kafka topic
+
 ## Authors
 
 - **Kritsada Ruangthawee** - 2320110188 - Lead Developer - [GitHub-Profile](https://github.com/copter50029)
