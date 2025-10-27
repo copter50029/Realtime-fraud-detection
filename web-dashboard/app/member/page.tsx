@@ -12,7 +12,7 @@ const members: Member[] = [
   {
     name: "Kritsada  Ruangthawe",
     img: "https://preview.redd.it/okay-but-it-would-be-so-hilarious-if-gojo-heals-himself-v0-uf8izbqtpaqb1.png?width=640&crop=smart&auto=webp&s=ceda32d3b0ea65f998649da2e8c5b2663a22ac40",
-    desc: "The leader of the group and the main developer of this project. (Goat)",
+    desc: "The leader of the group and the main developer of this project. (GOAT)",
   },
   {
     name: "Naphat Soontronwnalop",

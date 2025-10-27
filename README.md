@@ -33,9 +33,12 @@ This project uses Kafka for real-time data streaming, Spark for data processing,
 In terminal, navigate to the project directory and run:
 
 ```bash
-mkdir -p ./dags ./logs ./plugins ./config
-echo -e "AIRFLOW_UID=$(id -u)" > .env
+mkdir -p ./dags ./logs ./plugins ./config ./data
 ```
+
+echo -e "AIRFLOW_UID=$(id -u)" > .env
+
+````
 
 Then, for the first time, initialize the Airflow components:
 
@@ -60,3 +63,21 @@ Make sure everything containers are running:
 ```bash
 docker ps
 ```
+
+To access jupyter notebook, open your web browser and go to `http://localhost:8888`. Use the token provided in the terminal where you started the Docker containers.
+in jupyter notebook, drag and drop pySparkNB.ipynb from the `spark-chain` folder.
+
+Note: You Need to run cell below to obtain ML model before running the main cell.
+
+To access the Airflow web interface, open your web browser and go to `http://localhost:8080`. Log in with the default credentials (username: `airflow`, password: `airflow`).
+
+To monitor Kafka (controlcenter), open your web browser and go to `http://localhost:9021`.
+
+## Authors
+
+- **Kritsada Ruangthawee** - 2320110188 - Lead Developer - [GitHub-Profile](https://github.com/copter50029)
+- **Naphat Soontornwanlop** - 2320110139 - Machine Learning Developer - [GitHub-Profile](https://github.com/MrLonely1423)
+- **Lee-Anne Carlo I. Junio** - 2320110162 - Web Developer - [GitHub-Profile](https://github.com/L33by)
+- **Teetat Lertsaksereekul** - 2320110170 - Data Engineer - [GitHub-Profile](https://github.com/TeetatL)
+- **Kraipich Thanasitvekin** - 2320110196 - Web Developer - [GitHub-Profile](https://github.com/NoWMoNz)
+````
