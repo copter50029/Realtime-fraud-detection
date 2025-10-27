@@ -34,11 +34,8 @@ In terminal, navigate to the project directory and run:
 
 ```bash
 mkdir -p ./dags ./logs ./plugins ./config ./data
-```
-
 echo -e "AIRFLOW_UID=$(id -u)" > .env
-
-````
+```
 
 Then, for the first time, initialize the Airflow components:
 
@@ -80,4 +77,3 @@ To monitor Kafka (controlcenter), open your web browser and go to `http://localh
 - **Lee-Anne Carlo I. Junio** - 2320110162 - Web Developer - [GitHub-Profile](https://github.com/L33by)
 - **Teetat Lertsaksereekul** - 2320110170 - Data Engineer - [GitHub-Profile](https://github.com/TeetatL)
 - **Kraipich Thanasitvekin** - 2320110196 - Web Developer - [GitHub-Profile](https://github.com/NoWMoNz)
-````
