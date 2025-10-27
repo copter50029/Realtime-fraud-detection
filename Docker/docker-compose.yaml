@@ -306,19 +306,6 @@ services:
         condition: service_completed_successfully
     networks:
       - confluent
-  db:
-    image: mysql
-    container_name: datawarehouse
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: Data-Warehouse
-    ports:
-      - "3307:3306"
-    volumes:
-      - db_data:/var/lib/mysql
-      - ./script/init.sql:/docker-entrypoint-initdb.d/init.sql
-    networks:
-      - confluent
 
     # ---------- Kafka Broker ----------
   zookeeper:
@@ -434,6 +421,41 @@ services:
     command: start-notebook.sh --NotebookApp.token=''
     networks:
       - confluent
+
+  ksqldb-server:
+    image: confluentinc/cp-ksqldb-server:8.1.0
+    hostname: ksqldb-server
+    container_name: ksqldb-server
+    depends_on:
+      - broker1
+      - schema-registry
+    ports:
+      - "8088:8088"
+    environment:
+      KSQL_CONFIG_DIR: "/etc/ksql"
+      KSQL_BOOTSTRAP_SERVERS: "broker1:29092"
+      KSQL_HOST_NAME: ksqldb-server
+      KSQL_LISTENERS: "http://0.0.0.0:8088"
+      KSQL_CACHE_MAX_BYTES_BUFFERING: 0
+      KSQL_KSQL_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
+      KSQL_KSQL_CONNECT_URL: "http://connect:8083"
+      KSQL_KSQL_LOGGING_PROCESSING_TOPIC_REPLICATION_FACTOR: 1
+      KSQL_KSQL_LOGGING_PROCESSING_TOPIC_AUTO_CREATE: "true"
+      KSQL_KSQL_LOGGING_PROCESSING_STREAM_AUTO_CREATE: "true"
+    networks:
+      - confluent
+
+  ksqldb-cli:
+    image: confluentinc/cp-ksqldb-cli:8.0.2
+    container_name: ksqldb-cli
+    depends_on:
+      - broker1
+      - ksqldb-server
+    entrypoint: /bin/sh
+    tty: true
+    networks:
+      - confluent
+
 volumes:
   postgres-db-volume:
   db_data:

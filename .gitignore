@@ -209,8 +209,4 @@ __marimo__/
 Docker/config
 Docker/logs
 Docker/plugins
-Docker/script/init.sql
 Data/
-
-# Ignore vendor directory
-vendor/

@@ -1,0 +1,32 @@
+CREATE STREAM transactions_stream (
+  id INT,
+  trans_date_trans_time VARCHAR,
+  cc_num INT,
+  merchant VARCHAR,
+  category VARCHAR,
+  amt DOUBLE,
+  first VARCHAR,
+  last VARCHAR,
+  gender VARCHAR,
+  street VARCHAR,
+  city VARCHAR,
+  state VARCHAR,
+  zip INT,
+  lat DOUBLE,
+  long DOUBLE,
+  city_pop INT,
+  job VARCHAR,
+  dob VARCHAR,
+  trans_num VARCHAR,
+  unix_time INT,
+  merch_lat DOUBLE,
+  merch_long DOUBLE,
+  age INT,
+  age_group VARCHAR,
+  distance_km DOUBLE,
+  distance_group VARCHAR,
+  is_fraud INT
+) WITH (
+  KAFKA_TOPIC='ml_predictions',
+  VALUE_FORMAT='JSON'
+);
