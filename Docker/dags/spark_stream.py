@@ -62,7 +62,7 @@ def load_data(data):
 
 
 with DAG(
-    dag_id="spark_steam",
+    dag_id="spark_stream",
     schedule="@daily",
     start_date=pendulum.datetime(2025, 10, 4, tz="UTC"),
     catchup=False,

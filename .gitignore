@@ -210,3 +210,5 @@ Docker/config
 Docker/logs
 Docker/plugins
 Data/
+spark-chain/ML/*.csv
+spark-chain/ML/*pipeline_model
