@@ -209,6 +209,8 @@ __marimo__/
 Docker/config
 Docker/logs
 Docker/plugins
+Docker/.venv
 Data/
 spark-chain/ML/*.csv
 spark-chain/ML/*pipeline_model
+spark-cluster/*.tgz

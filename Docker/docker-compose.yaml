@@ -397,6 +397,7 @@ services:
       CONTROL_CENTER_REPLICATION_FACTOR: 1
       CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS: 1
       CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 1
+      CONTROL_CENTER_KSQL_KSQLDB1_URL: "http://ksqldb-server:8088"
       CONFLUENT_METRICS_TOPIC_REPLICATION: 1
       CONFLUENT_METRICS_ENABLE: "false"
       PORT: 9021
@@ -408,18 +409,73 @@ services:
       timeout: 10s
       retries: 5
 
-  jupyter:
-    image: jupyter/pyspark-notebook
-    build: ../spark-chain
-    container_name: pyspark-notebook
-    ports:
-      - "8888:8888"
+  #For training ML models disable it when got pipeline model saved
+  # jupyter:
+  #   image: jupyter/pyspark-notebook
+  #   build: ../spark-chain
+  #   container_name: pyspark-notebook
+  #   ports:
+  #     - "8888:8888"
+  #   volumes:
+  #     -  ../spark-chain:/home/jovyan/work
+  #   environment:
+  #     JUPYTER_ENABLE_LAB: "yes"
+  #     GRANT_SUDO: "yes"
+  #   command: start-notebook.sh --NotebookApp.token=''
+  #   networks:
+  #     - confluent
+
+  spark-master:
+    container_name: da-spark-master
+    # build: ../spark-cluster  # for building custom image
+    image: da-spark-image
+    entrypoint: ["./entrypoint.sh", "master"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
     volumes:
-      -  ../spark-chain:/home/jovyan/work
-    environment:
-      JUPYTER_ENABLE_LAB: "yes"
-      GRANT_SUDO: "yes"
-    command: start-notebook.sh --NotebookApp.token=''
+      - ../spark-cluster/book_data:/opt/spark/data
+      - ../spark-cluster/spark_apps:/opt/spark/apps
+      - ../spark-chain/ML/pipeline_model:/opt/spark/pipeline_model
+      - spark-logs:/opt/spark/spark-events
+    env_file:
+      - .env.spark
+    ports:
+      - "9090:8080"
+      - "7077:7077"
+    networks:
+      - confluent
+
+  spark-history-server:
+    container_name: da-spark-history
+    image: da-spark-image
+    entrypoint: ["./entrypoint.sh", "history"]
+    depends_on:
+      - spark-master
+    env_file:
+      - .env.spark
+    volumes:
+      - spark-logs:/opt/spark/spark-events
+    ports:
+      - "18080:18080"
+    networks:
+      - confluent
+
+  spark-worker:
+    container_name: da-spark-worker
+    image: da-spark-image
+    entrypoint: ["./entrypoint.sh", "worker"]
+    depends_on:
+      - spark-master
+    env_file:
+      - .env.spark
+    volumes:
+      - ../spark-cluster/book_data:/opt/spark/data
+      - ../spark-cluster/spark_apps:/opt/spark/apps
+      - ../spark-chain/ML/pipeline_model:/opt/spark/pipeline_model
+      - spark-logs:/opt/spark/spark-events
     networks:
       - confluent
 
@@ -459,6 +515,7 @@ services:
 
 volumes:
   postgres-db-volume:
+  spark-logs:
 
 networks:
   confluent:

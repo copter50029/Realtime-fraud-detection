@@ -58,7 +58,7 @@ def load_data(data):
     producer = KafkaProducer(bootstrap_servers=["broker1:29092"], max_block_ms=5000)
     for record in data:
         producer.send("transactions", json.dumps(record).encode("utf-8"))
-        time.sleep(1)  # Simulate real-time by adding a delay
+        time.sleep(0.5)  # Simulate real-time by adding a delay
 
 
 with DAG(
