@@ -32,8 +32,25 @@ This project uses Kafka for real-time data streaming, Spark for data processing,
 In terminal, navigate to the project directory and run:
 
 ```bash
-mkdir -p ./dags ./logs ./plugins ./config ./data
+mkdir -p ./Data
+```
+in `Data` folder, place your input data files if you have any.
+but we have included sample data files for testing purpose.
+
+Then, change to the `Docker` directory and create necessary folders and set the Airflow user ID in a `.env` file:
+
+```bash
+cd Docker/
+mkdir -p ./dags ./logs ./plugins ./config
 echo -e "AIRFLOW_UID=$(id -u)" > .env
+```
+
+In `.env` file, set variables as needed. Default values are provided for reference:
+
+```
+# add the following variables to your .env file AIRFLOW_UID will be set automatically
+POSTGRES_PASSWORD=airflow
+MYSQL_ROOT_PASSWORD=Super_Secret_Password
 ```
 
 Then, for the first time, initialize the Airflow components:
@@ -42,40 +59,109 @@ Then, for the first time, initialize the Airflow components:
 docker-compose up airflow-init
 ```
 
+Wait until the initialization is complete.
+
 After that, clean up the initialization containers:
 
 ```bash
 docker compose down --volumes --remove-orphans
 ```
 
-Finally, start the Airflow services:
+folder structure in `Docker` should be like this:
 
-```bash
-docker-compose up
+```
+Docker/
+├── config/
+│   └── airflow.cfg
+├── dags/
+│   └── spark_stream.py
+├── logs/
+├── plugins/
+├── script/
+│   └── init.sql
+├── .env
+├── .env.spark
+├── docker-compose.yaml
+├── Dockerfile
+├── Makefile
+└── requirements.txt
 ```
 
-Make sure everything containers are running:
+we finish setting up airflow components.
+Next, if you first time running the project, you to build the custom image for spark worker with the required dependencies:
 
 ```bash
-docker ps
+cd ../spark-cluster
+wget https://archive.apache.org/dist/spark/spark-4.0.1/spark-4.0.1-bin-hadoop3.tgz
+docker compose build
 ```
 
-To access jupyter notebook, open your web browser and go to `http://localhost:8888`. Use the token provided in the terminal where you started the Docker containers.
-in jupyter notebook, drag and drop pySparkNB.ipynb from the `spark-chain` folder.
+folder structure in `spark-cluster` should be like this:
 
-Note: You Need to run cell below to obtain ML model before running the main cell.
+```
+spark-cluster/
+    ├── conf
+    │   └── spark-defaults.conf
+    └── Dockerfile
+    └── entrypoint.sh
+    └── requirements.txt
+    └── spark-4.0.1-bin-hadoop3.tgz
+```
 
-To access the Airflow web interface, open your web browser and go to `http://localhost:8080`. Log in with the default credentials (username: `airflow`, password: `airflow`).
+For first time users, need to pre-train ML model
+open pyspark/notebook server at `http://localhost:8888` and run the notebook `ML-train.ipynb` to train and save the model.
+For training data, following this [link](https://www.kaggle.com/datasets/kartik2112/fraud-detection/data?select=fraudTrain) to download the dataset.
 
-To monitor Kafka (controlcenter), open your web browser and go to `http://localhost:9021`.
+folder structure in `spark-chain` should be like this:
 
-To start ksqlDB CLI, go to your terminal and run:
+```
+spark-cluster/
+    ├── ML/
+    │   └── pipeline_model/  # Pre-trained ML model saved here
+    │   └── ML-train.ipynb
+    │   └── fraudTrain.csv
+    └── pysparkNb.ipynb # reference notebook for training
+    └── Dockerfile
+    └── requirements.txt
+```
+
+When you have pipeline_model and fraudTrain.csv then you can delete fraudTrain.csv
 
 ```bash
-docker exec -it ksqldb-cli ksql http://ksqldb-server:8088
+rm spark-cluster/ML/fraudTrain.csv
+rm spark-cluster/ML-train.ipynb
 ```
 
-Next, copy and paste the sql command in folder `Docker/scripts` to create a stream from the Kafka topic
+Finally, start all services:
+
+```bash
+cd ../Docker
+make run-d
+# or make run-scaled for scaled spark cluster
+```
+
+wait until all services are up and running.
+Next, open Airflow webserver at `http://localhost:8080` and trigger the DAG named `spark_stream` to start the fraud detection process.
+or use command line to trigger the DAG:
+
+```bash
+make turn-on-dag
+```
+
+Next , send spark job to spark cluster using the command below:
+
+```bash
+make Submit_ML
+```
+
+you can monitor data flow in Kafka topics using control center at `http://localhost:9021`
+
+Next , you can see web dashboard for monitoring results (Next.js framework) 
+```bash
+cd web-dashboard
+npm install i
+npm run dev
+```
 
 ## Authors
 
